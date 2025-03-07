@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91069589-CE1F-492B-96E7-3F487EBFD63C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SolidApplication</RootNamespace>
+    <AssemblyName>SolidApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\ResponseBase.cs" />
+    <Compile Include="Base\TaskAssignBase.cs" />
+    <Compile Include="Base\TaskStateBase.cs" />
+    <Compile Include="Commands\TaskAssignCommand.cs" />
+    <Compile Include="Commands\TaskCreateCommand.cs" />
+    <Compile Include="Commands\TaskDoneCommand.cs" />
+    <Compile Include="Commands\TaskInProgressCommand.cs" />
+    <Compile Include="Commands\TaskTestCommand.cs" />
+    <Compile Include="Commands\TaskTodoCommand.cs" />
+    <Compile Include="Contexts\MyContext.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
+    <Compile Include="Enums\TaskState.cs" />
+    <Compile Include="Events\TaskTodoEvent.cs" />
+    <Compile Include="Factories\DbContextFactory.cs" />
+    <Compile Include="Factories\DBResponseFactory.cs" />
+    <Compile Include="Factories\GetAssignedTaskToUserHandlerFactory.cs" />
+    <Compile Include="Factories\GetTaskAssignedToUserWithSpesificTaskStateQueryHandlerFactory.cs" />
+    <Compile Include="Factories\GetTaskWithSpesificTaskStateQueryHandlerFactory.cs" />
+    <Compile Include="Factories\NetMailServiceFactory.cs" />
+    <Compile Include="Factories\TaskAssignHandlerFactory.cs" />
+    <Compile Include="Factories\TaskCreateHandlerFactory.cs" />
+    <Compile Include="Factories\TaskDoneHandlerFactory.cs" />
+    <Compile Include="Factories\TaskEventSubscriberFactory.cs" />
+    <Compile Include="Factories\TaskInProgressHandlerFactory.cs" />
+    <Compile Include="Factories\TaskRepositoryFactory.cs" />
+    <Compile Include="Factories\TaskTestHandlerFactory.cs" />
+    <Compile Include="Factories\TaskTodoHandlerFactory.cs" />
+    <Compile Include="Factories\UserRepositoryFactory.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\GetAssignedTaskToUserQueryHandler.cs" />
+    <Compile Include="Handlers\GetTaskAssignedToUserWithSpesificTaskStateQueryHandler.cs" />
+    <Compile Include="Handlers\GetTaskWithSpesificTaskStateQueryHandler.cs" />
+    <Compile Include="Handlers\TaskAssignHandler.cs" />
+    <Compile Include="Handlers\TaskCreateHandler.cs" />
+    <Compile Include="Handlers\TaskDoneHandler.cs" />
+    <Compile Include="Handlers\TaskInProgressHandler.cs" />
+    <Compile Include="Handlers\TaskTestCommandHandler.cs" />
+    <Compile Include="Handlers\TaskTodoHandler.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\ICommandHandler.cs" />
+    <Compile Include="Interfaces\IEvent.cs" />
+    <Compile Include="Interfaces\IMailService.cs" />
+    <Compile Include="Interfaces\INotification.cs" />
+    <Compile Include="Interfaces\IQuery.cs" />
+    <Compile Include="Interfaces\IQueryHandler.cs" />
+    <Compile Include="Interfaces\ISmsService.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\GetAssignedTaskToUserQuery.cs" />
+    <Compile Include="Queries\GetTaskAssignedToUserWithSpesificTaskStateQuery.cs" />
+    <Compile Include="Queries\GetTaskWithSpesificTaskStateQuery.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ITaskRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\NetMailService.cs" />
+    <Compile Include="Subscribers\TaskTodoEventSubscriber.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
